@@ -1,9 +1,0 @@
-rotating
-i don't know reset
-
-
-
-// @there
-		if (a[0]>90) console.debug(a[0])
-		 else 
-		if (parseFloat(a[0]) != a[0]) return new Token('error','Can only go forward a number, max.'+Game.maxMovem+', not like '+a[0])
