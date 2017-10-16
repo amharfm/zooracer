@@ -1,0 +1,23 @@
+<html>
+<head>
+  <script src="lib/socket.io-1.4.5.js"></script>
+</head>
+<body>
+<button id="b1">click</button>
+<script type="text/javascript">
+var Soket;
+  Soket = io('http://192.168.1.253:84');
+
+  Soket.on('login', function(err){
+    console.log("messages")
+  });
+
+  document.getElementById('b1').onclick=function(){
+    console.log('clicked')
+    Soket.emit('login', {
+      isi: 'apalah'
+    });
+  }
+</script>
+</body>
+</html>

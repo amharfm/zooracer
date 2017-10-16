@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<title>Zoo Racer v1</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="papert.css" />
+    <script type="text/javascript" src="turtle.js"></script>
+    <script type="text/javascript" src="parser.js"></script>
+    <script type="text/javascript" src="logo.js"></script>
+    <script type="text/javascript" src="init.js"></script>
+    <script type="text/javascript" src="lib/whatcolouristhis.js" async></script>
+    
+    <script src="lib/alertifyjs/alertify.min.js"></script>
+    <link rel="stylesheet" href="lib/alertifyjs/alertify.core.css">
+    <link rel="stylesheet" href="lib/alertifyjs/alertify.default-ed.css">
+    
+    <script type="text/javascript" src="gamification.js"></script>
+    <style type="text/css">
+        @font-face {
+          font-family: fishandchips;
+          src:url(font/FISH&CHIPS-Regular.ttf);
+        }
+    </style>
+</head>
+<body onload="Game.sign()" background = "img/forest.jpg" style="font-family: 'fishandchips'">
+<!-- <body background = "img/forest.jpg"> -->
+<center>
+    <table border=0>
+        <td><img src="img/logo.png"  height="24"></td>
+        <td><h1>Maze</h1></td>
+    </table>
+</center>
+
+<div id="main">
+<form id="input" action="/" method="post" onSubmit="this.img.value = canvas.toDataURL().replace('data:image/png;base64,','')">
+<div id="content">
+    <div class="inner">
+        <textarea name="code" id="code" rows="80" cols="20" placeholder="..."></textarea>
+        <div>
+        <div id="oldcode">&nbsp;</div>
+		</div>
+        <div style="margin: 5px;">
+        	 <i>Press <b>[ENTER]</b> to direct your pet to follow codes above!</i>
+		<!--<br/><i>Anyway, Maximum movement is <b>90</b> (units or even degrees)</i>-->
+        <!-- <input type="button" onClick="run(25,true);" value="run slowly" /> -->
+        <!-- <input type="button" onClick="run(5,false);" value="run normally" style="font-weight: bold;"/> -->
+        <!-- <input type="button" onClick="run(1,false);" value="run fast" /> -->
+        <!-- <input type="button" onClick="stop();" value="stop program" /> -->
+        <input type="hidden" name="img" />
+        </div>
+
+    </div>
+</div>
+
+<div id="left">
+    <div class="inner">
+		<div id="textOutput"></div>
+        <div id="turtle">
+            <embed width="20" height="20" id='sprite'/>
+        </div>
+        <canvas id="canvas" width="500" height="500">
+    Your browser doesn't support canvas tags. Please upgrade to a recent version of Firefox or Opera.
+    </canvas>
+    <!-- <span style="float: left; margin-right: auto;">
+    <input type="button" onClick="document.location.href = canvas.toDataURL().replace('image/png', 'image/octet-stream')" value="save as png" />
+    </span> -->
+    TIME:      SCORE:
+     <span style="float: right;margin-left: auto; margin-right: 20px;">
+     <!--<input type="button" onClick="clearcanvas();" value="clear" />-->
+     </span>
+</div>
+        
+</div>
+</form>
+
+<div id="footer">
+<span style="float: left; margin-left: 20px; margin-right: auto; color: white;">
+<!-- Recent Programs -->
+</span>
+<span style="float: right;margin-left: auto; margin-right: 20px; color: white;">
+this is free software, and 
+<a href="http://code.google.com/p/papert">papert is hosted on google code</a>
+</span>
+&nbsp;
+</div>
+
+<!--<iframe id="notes" src="help.txt"/>-->
+
+</div>
+</body>
+<br><footer style=" font-size: 12px;color:#fff;" align="center">
+  Made in Indonesia, by 
+  <a style="color:#fff;" target="new" href="http://instagram.com/rnaziira">Ranaa</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/m.windysheehan">Windy</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/nadiraeffendy">Nadira</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/">Rezy</a> of Grade 10 MHIS (2017)
+</footer>
+</html>

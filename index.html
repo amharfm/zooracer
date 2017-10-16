@@ -1,0 +1,62 @@
+<html>
+<head>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  
+  <script src="lib/alertifyjs/alertify.min.js"></script>
+  <link rel="stylesheet" href="lib/alertifyjs/alertify.core.css">
+  <link rel="stylesheet" href="lib/alertifyjs/alertify.default-ed.css">
+
+  <script type="text/javascript" src="gamification.js"></script>
+  <style>
+  button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  @font-face {
+    font-family: fishandchips;
+    src:url(font/FISH&CHIPS-Regular.ttf);
+  }
+</style>
+</head>
+<title>Zoo Racer v1 (2017)</title>
+<body background = "img/forest.jpg">
+
+<center>
+<img src="img/logo.png"  width="500">
+
+  <br>
+  <div style= "font-family : fishandchips ; font-size: 30px; color:#fff" >
+  Name: <input type="text" id="player_name" style= "font-family : fishandchips ; font-size: 30px;">
+</div>
+  <br>
+
+  <button onclick="Game.login()">START</button>
+
+</center>
+
+<script>
+	document.getElementById('player_name').focus();
+	document.getElementById('player_name').onkeyup = function(event){
+				if(event.keyCode==13){
+					Game.login();
+				};
+			}
+</script>
+</body>
+<br><footer style=" font-size: 12px;color:#fff;" align="center">
+  Made in Indonesia, by 
+  <a style="color:#fff;" target="new" href="http://instagram.com/rnaziira">Ranaa</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/m.windysheehan">Windy</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/nadiraeffendy">Nadira</a>, 
+  <a style="color:#fff;" target="new" href="http://instagram.com/">Rezy</a> of Grade 10 MHIS (2017)
+</footer>
+</html>
