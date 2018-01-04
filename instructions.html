@@ -8,78 +8,82 @@
     
   <link rel="shortcut icon" href="favicon.ico" />  
   <style>
-  @font-face {
-    font-family: "fishandchips";
-    src:"font/FISH&CHIPS-Regular.ttf";
-  }
+    @font-face {
+      font-family: "fishandchips";
+      src:"font/FISH&CHIPS-Regular.ttf";
+    }
 
-  #instruction {
-      /*background-color: lightblue;*/
-      background: rgba(173, 216, 230, 0.8);
-      alpha: 0.5;
-      position: relative;
-      margin: auto;
-      width: 480px;
-      padding: 5px;
-      /*left: 222px;*/
-  }
+    #instruction {
+        /*background-color: lightblue;*/
+        background: rgba(173, 216, 230, 0.8);
+        alpha: 0.5;
+        position: relative;
+        margin: auto;
+        width: 480px;
+        padding: 5px;
+        /*left: 222px;*/
+    }
 
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    @font-face {
+      font-family: fishandchips;
+      src:url(font/FISH&CHIPS-Regular.ttf);
+    }
   </style>
+
+  <script type="text/javascript" src="gamification.js"></script>
+  
 </head>
-<body background = "img/forest.jpg">
-  <center><img src="img/logo.png"  width="250"></center>
-<div id="instruction" style="font-family:'fishandchips';"><h2>INSTRUCTION</h2>
-  <font size=5>
-  <ol>
-    <li>First, you should aim the position you want, by typing or commanding in maximum <b>360</b> degrees/units.</li>
-    <li>Second, measure the position you want to move by typing "forward", "backward", "left", or "right".<br/>For example, to move forward 100 units, please type <b>FORWARD 100</b>. This applies for the <u>degree</u> of <b>RIGHT</b> or <b>LEFT</b>. For further example, go to <a target="new" href="./help.txt">help.txt</a></li>
-    <li><!-- After that you can  -->Play the game until you reach the <img src='./img/finish.bmp'> <br/>and stay away from <img src='./img/fence.bmp'></li>
-  </ol></font>
-</div>
-<center>
-  <div id="animals">
- <font size="6" color="#fff" face="fishandchips">Click an animal below to start!</font>
- <table id="anim_list" border="0" cellpadding=0 cellspacing=0>
- </table>
- </div>
- <script type="text/javascript" src="gamification.js"></script>
-  <script>
-    Game.anim_num = 0;
 
-    var wait = setInterval(function(){
-      if (WS.readyState==1){
-        clearInterval(wait);
-        Game.send({
-          'to': 'get animals',
-          'id': window.location.hash.slice(1)
-        });
-      }
-    }, 1000);
+<body background="img/forest.jpg" onload="gameon()">
+  <center>
+    <h1>
+      <img src="img/logo.png"  width="250">
+    </h1>
+  </center>
+  <div id="instruction" style="font-family:'fishandchips';">
+    <h2>INSTRUCTION</h2>
+    <font size=5>
+    <ol>
+      <li>First, you should aim the position you want, by typing or commanding in maximum <b>360</b> degrees/units.</li>
+      <li>Second, measure the position you want to move by typing "forward", "backward", "left", or "right".<br/>For example, to move forward 100 units, please type <b>FORWARD 100</b>. This applies for the <u>degree</u> of <b>RIGHT</b> or <b>LEFT</b>. For further example, go to <a target="new" href="./help.txt">help.txt</a></li>
+      <li><!-- After that you can  -->Play the game until you reach the <img src='./img/finish.bmp'> <br/>and stay away from <img src='./img/fence.bmp'></li>
+    </ol></font>
+  </div>
+  <center>
+    <div id="animals">
+      <font size="6" color="#fff" face="fishandchips">Click an animal below to start!</font>
+      <table id="anim_list" border="0" cellpadding=0 cellspacing=0>
+      </table>
+    </div>
+  </center>
+ </body>
 
-  </script>
-  <style>
-  button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-@font-face {
-  font-family: fishandchips;
-  src:url(font/FISH&CHIPS-Regular.ttf);
-</body>
 <br><footer style=" font-size: 12px;color:#fff;" align="center">
-  Made in Indonesia, by 
+  Once developed in Indonesia, by 
   <a style="color:#fff;" target="new" href="http://instagram.com/rnaziira">Ranaa</a>, 
   <a style="color:#fff;" target="new" href="http://instagram.com/m.windysheehan">Windy</a>, 
   <a style="color:#fff;" target="new" href="http://instagram.com/nadiraeffendy">Nadira</a>, 
-  <a style="color:#fff;" target="new" href="http://instagram.com/">Rezy</a> of Grade 10 MHIS (2017)
+  <a style="color:#fff;" target="new" href="http://instagram.com/yamikuc">Rezy</a> 
+  of Grade 10 MHIS (2017)
+  <a style="color:#fff;" target="new" href="http://instagram.com/amhar.fm">Amhar</a> (2017-now)
+  <br/>
+  Credits to: 
+    <a href="http://logo.twentygototen.org/">papert js</a>
+    <a href="fabien-d.github.io/alertify.js/">alertify</a>
+    <a href="http://uwwlca.com/photographyhkpy/free-windows-7-desktop-icons-downloads">animals</a>
+    <a href="https://www.dafont.com/fish-chips.font">fonts</a>
 </footer>
 </html>

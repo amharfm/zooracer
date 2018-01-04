@@ -1,47 +1,23 @@
 {
-  "_npmVersion": "3.6.0",
-  "author": {
-    "name": "Grade10mhis"
+  "name": "gggg",
+  "version": "1.0.0",
+  "description": "LOGO Programming, in racing mode",
+  "main": "gamification.js",
+  "directories": {
+    "lib": "lib"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "address": "0.0.3",
-    "browserify": "11.0.0",
-    "canvas-pixel-color": "1.0.2",
-    "json-file": "0.1.0",
-    "macaddress": "0.2.8",
+    "address": "^1.0.3",
+    "canvas-pixel-color": "^1.0.2",
+    "json-file": "^0.1.0",
     "node-stopwatch": "0.0.1",
-    "nodejs-websocket": "1.5.0",
-    "nodemon": "1.10.0",
-    "play-sound": "^1.1.1",
-    "uniqid": "4.1.1"
-  },
-  "description": "Trains your basic LOGO programming through racing",
-  "devDependencies": {},
-  "directories": {},
-  "email": "MHIS",
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "homepage": "https://localhost/zooracer",
-  "keywords": [
-    "javascript",
-    "LOGO",
-    "web",
-    "papert",
-    "turtle"
-  ],
-  "licenses": [
-    {
-      "type": "?"
-    }
-  ],
-  "main": "index.html",
-  "maintainers": [
-    {
-      "name": "Grade 10",
-      "email": "MHIS"
-    }
-  ],
-  "name": "Zoogo Racer",
-  "readme": "help.txt"
+    "nodejs-websocket": "^1.7.1",
+    "uniqid": "^4.1.1"
+  }
 }

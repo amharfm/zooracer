@@ -13,8 +13,16 @@ var server = ws;
 
 var Race = {};
 var Animals = [];
-var player_list = [];
 var Tracks = [];
+var player_list = [];
+
+function count_player_list(R){
+	player_list = [];
+	for (var p in R){ player_list.push(R[p].name) }
+	console.log('Players:', player_list)
+ return player_list;
+}
+
 
 const port = 7223;
 
@@ -46,29 +54,37 @@ server = ws.createServer(function (conn){
 							'who': obj.what,
 							'id': conn.socket.uniqid
 						}))
-						// console.log(Race)
+
+						count_player_list(Race);
+						// player_list.push(obj.what)
+						
 					});
 				break;
 				case 'stay' :
-					Race[conn.socket.uniqid]['stay'] = obj.stat;
+					if (obj.id!='SINGLE'){
+						Race[(conn.socket.uniqid || obj.id)]['stay'] = obj.stat;
+					} else {
+						Race = { 'SINGLE': 
+						   { x: 250,
+						     y: 250,
+						     addr: '::1',
+						     name: 'SINGLE',
+						     stay: true,
+						     animal: 'lion',
+						     track: 'maze1.bmp' } 
+						};
+					}
 					break;
 				case 'get animals':
-					conn.socket.uniqid = obj.id;
+					if (!conn.socket.uniqid) conn.socket.uniqid = obj.id;
 					conn.send(JSON.stringify({
 						'to': 'get animals',
-						'list_anim': Animals
-					}))
-					break;
-				case 'kuy!':
-					conn.socket.uniqid = obj.id;
-					conn.send(JSON.stringify({
-						'to': 'kuy!',
-						'who' : obj.who,
-						'animal' : Race[obj.id]['animal']
+						'list_anim': Animals,
+						'id': obj.id
 					}))
 					break;
 				case 'join the race' :
-					conn.socket.uniqid = obj.id;
+					if (!conn.socket.uniqid) conn.socket.uniqid = obj.id;
 					conn.send(JSON.stringify({
 						'to': 'start',
 						'animal' : Race[obj.id]['animal'],
@@ -77,8 +93,8 @@ server = ws.createServer(function (conn){
 					Race[obj.id]['track'] = obj.track;
 					break;
 				case 'choose player':
-					conn.socket.uniqid = obj.id;
-					console.log(obj.id, 'chooses', obj.animal);
+					if (!conn.socket.uniqid) conn.socket.uniqid = obj.id;
+					console.log(Race[obj.id]['name'], 'chooses', obj.animal);
 					Animals.splice(Animals.indexOf(obj.animal), 1);
 					server.connections.forEach(function(e){
 						e.send(JSON.stringify({
@@ -90,12 +106,15 @@ server = ws.createServer(function (conn){
 					Race[obj.id]['animal'] = obj.animal;
 					conn.send(JSON.stringify({
 						'to': 'yuk!',
-						'who' : obj.who,
+						'who' : obj.id,
 						'animal' : obj.animal
 					}))
+					// console.log('Players:', player_list);
+					count_player_list(Race)
 					break;
 				case 'ngiuung':
-					conn.socket.uniqid = obj.id;
+					if (!conn.socket.uniqid) conn.socket.uniqid = obj.id;
+					console.log(Race[obj.id].name, 'is rolling...')
 					Race[obj.id]['x'] = obj.pos.x;
 					Race[obj.id]['y'] = obj.pos.y;
 					//broadcast
@@ -118,6 +137,11 @@ server = ws.createServer(function (conn){
 							'animal': Race[obj.id]['animal'],
 							'list': Race,
 							'curr_track': Race[obj.id]['track']
+						}));
+					} else {
+						console.log('Nope. Player is not active.')
+						conn.send(JSON.stringify({
+							'to': 'error'
 						}));
 					}
 					break;
@@ -147,14 +171,13 @@ server = ws.createServer(function (conn){
 						}))
 					});
 				default :
-					// console.log('~',obj)
+					console.log('~',obj)
 					break;
 			}
 			// console.log(Race);
 		}
 	})
 	conn.on("close", function(code, reason){
-		console.log('\n CLOSE',code,reason)
 		server.connections.forEach(function(c){
 			c.send(JSON.stringify({
 				'to': 'remove player',
@@ -162,7 +185,7 @@ server = ws.createServer(function (conn){
 			}))
 		})
 		if(conn.socket.uniqid) if (!Race[conn.socket.uniqid]['stay']) delete Race[conn.socket.uniqid];
-		// console.log(Race);
+		count_player_list(Race);
 	})
 	conn.on("error", function(err){})
 }).listen(port);
