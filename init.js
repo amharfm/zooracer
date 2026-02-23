@@ -98,8 +98,8 @@ function clearcanvas(track) {
   // {
   // }
     var base_image = new Image();
-    base_image.src = 'img/track/'+track;
-
+    base_image.src = "https://raw.githubusercontent.com/amharfm/zooracer/refs/heads/master/" + 'img/track/'+track;
+    
     var ctx = canvas.getContext('2d');
     base_image.onload = function(){
       ctx.drawImage(base_image, 0, 0);
