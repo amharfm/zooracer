@@ -224,9 +224,9 @@ Turtle.prototype.penup = function() {
 
 Turtle.prototype.pendown = function() {
     this.savestate();
-    this.pen = false;
+    //this.pen = false;
     // @
-    // this.pen = true;
+    this.pen = true;
 }
 
 
