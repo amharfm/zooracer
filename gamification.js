@@ -154,10 +154,13 @@ function gameon (){
 									})
 								} else {
 									alertify.success('C O N G R A T U L A T I O N S!');
+									// @
+									/*
 									var wait = setInterval(function(){
 										window.location.href = '../zooracer';
 										clearInterval(wait)
 									}, 1000)
+									*/
 								}
 							}
 							Game.alertCounter++;
